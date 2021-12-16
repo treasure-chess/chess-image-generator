@@ -1,11 +1,11 @@
 {
-  "name": "chess-image-generator",
+  "name": "treasure-chess/chess-image-generator",
   "version": "1.1.0",
   "description": "Generate images based on various forms of chess notation.",
   "main": "src/index.js",
   "types": "src",
   "scripts": {
-    "test": "node ./test/index.js"
+    "test": "node ./test/index.js --unhandled-rejections=none"
   },
   "repository": {
     "type": "git",
@@ -21,9 +21,9 @@
   "author": "Andrew Young",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/andyruwruw/chessimage/issues"
+    "url": "https://github.com/treasure-chess/chess-image-generator/issues"
   },
-  "homepage": "https://github.com/andyruwruw/chessimage#readme",
+  "homepage": "https://github.com/treasure-chess/chess-image-generator#readme",
   "dependencies": {
     "canvas": "^2.6.1",
     "canvas-to-buffer": "^1.1.0",
