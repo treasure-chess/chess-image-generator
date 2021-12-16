@@ -12,16 +12,19 @@
 # Overview
 
 chess-image-generator creates a **PNG file** or **PNG Buffer** from either a:
+
 - FEN
 - PGN
 - array data
 
 Passed in options allow you to choose:
+
 - size of the canvas
 - colors of board
 - style of pieces
 
 Output to either:
+
 - a PNG to given path
 - PNG Buffer
 
@@ -29,19 +32,18 @@ Output to either:
 
 - [Installation](#installation)
 - [Loading in a Chess Position](#loading-in-a-chess-position)
-    - [FEN](#loading-by-fen)
-    - [PGN](#loading-by-pgn)
-    - [Array of Characters](#loading-by-array)
+  - [FEN](#loading-by-fen)
+  - [PGN](#loading-by-pgn)
+  - [Array of Characters](#loading-by-array)
 - [Generating Images](#generate-an-image)
-    - [into PNG](#generate-a-png)
-    - [into Buffer](#generate-a-buffer)
+  - [into PNG](#generate-a-png)
+  - [into Buffer](#generate-a-buffer)
 - [Image Customization](#image-customization)
-    - [Canvas Size](#canvas-size)
-    - [Board Colors](#board-colors)
-    - [Piece Style](#piece-style)
-    - [Board POV](#board-pov)
+  - [Canvas Size](#canvas-size)
+  - [Board Colors](#board-colors)
+  - [Piece Style](#piece-style)
+  - [Board POV](#board-pov)
 - [Dependencies](#dependencies)
-
 
 # Installation
 
@@ -50,12 +52,15 @@ Install via node:
     $ npm i -S chess-image-generator
 
 Then import the package and instantiate:
+
 ```
 var ChessImageGenerator = require('chess-image-generator');
 
 var imageGenerator = new ChessImageGenerator();
 ```
+
 or pass in [options for customization](#image-customization):
+
 ```
 var ChessImageGenerator = require('chess-image-generator');
 
@@ -75,6 +80,7 @@ Load in your chess position with [one of three methods](#loading-in-a-chess-posi
 Once you've created an instance of the chess-image-generator, you can load a chess position using one of three formats.
 
 ### Available Formats
+
 - [Forsyth–Edwards Notation (FEN)](#loading-by-fend)
 - [Portable Game Notation (PGN)](#loading-by-pgn)
 - [Array of Characters](#loading-by-array)
@@ -84,23 +90,25 @@ Once you've created an instance of the chess-image-generator, you can load a che
 ```
 .loadFEN(fen)
 ```
-| Parameter    | Type     | Description          |
-|---------|----------|----------------------|
-| fen | `string` | Board FEN. |
 
-FEN appears in the follow [format](https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation): 
+| Parameter | Type     | Description |
+| --------- | -------- | ----------- |
+| fen       | `string` | Board FEN.  |
+
+FEN appears in the follow [format](https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation):
 
 ```
 r2qk2r/p1p5/bpnbp2p/1N1p1p2/P2P1p1N/2PQ2P1/1P2PPBP/R4RK1 b kq - 1 13
 ```
+
 Each piece is notated by a character.
 
 | Char           | Value                   | Example            |
-|----------------|-------------------------|--------------------|
-| Uppercase Char | *White Pieces*          | *K, Q, R, B, N, P* |
-| Lowercase Char | *Black Pieces*          | *k, q, r, b, n, p* |
-| Slash          | *New Row*               | */*                |
-| Numbers        | *Count of blank spaces* |  *3, 1, 4*         |
+| -------------- | ----------------------- | ------------------ |
+| Uppercase Char | _White Pieces_          | _K, Q, R, B, N, P_ |
+| Lowercase Char | _Black Pieces_          | _k, q, r, b, n, p_ |
+| Slash          | _New Row_               | _/_                |
+| Numbers        | _Count of blank spaces_ | _3, 1, 4_          |
 
 # Loading by PGN
 
@@ -108,10 +116,9 @@ Each piece is notated by a character.
 .loadPGN(pgn)
 ```
 
-| Parameter    | Type     | Description          |
-|---------|----------|----------------------|
-| pgn | **string** | Game PGN. |
-
+| Parameter | Type       | Description |
+| --------- | ---------- | ----------- |
+| pgn       | **string** | Game PGN.   |
 
 PGN appears in the follow [format](https://en.wikipedia.org/wiki/Portable_Game_Notation):
 
@@ -141,9 +148,10 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2
 ```
 .loadArray(array)
 ```
-| Parameter    | Type     | Description          |
-|---------|----------|----------------------|
-| array | `array of arrays` | Board array with characters. |
+
+| Parameter | Type              | Description                  |
+| --------- | ----------------- | ---------------------------- |
+| array     | `array of arrays` | Board array with characters. |
 
 Array should be passed with the following format:
 
@@ -162,18 +170,20 @@ Array should be passed with the following format:
 
 Piece notation follows the same rules as [FEN](#loading-by-fen).
 
-| Char           | Value                   | Example            |
-|----------------|-------------------------|--------------------|
-| Uppercase Char | *White Pieces*          | *K, Q, R, B, N, P* |
-| Lowercase Char | *Black Pieces*          | *k, q, r, b, n, p* |
+| Char           | Value          | Example            |
+| -------------- | -------------- | ------------------ |
+| Uppercase Char | _White Pieces_ | _K, Q, R, B, N, P_ |
+| Lowercase Char | _Black Pieces_ | _k, q, r, b, n, p_ |
 
 # Generate an Image
 
 After you've loaded a chess position into an instance of the chess-image-generator, use the following functions to generate your image with one of two outputs:
+
 - [PNG with Path](#generate-a-png)
 - [PNG Buffer](#generate-a-buffer)
 
 # Generate a PNG
+
 ```
 .generatePNG(path)
 ```
@@ -182,13 +192,13 @@ The path should be relative to where it is called and include the end name of th
 
 A new PNG file will be generated with position.
 
-| Parameter    | Type     | Description          |
-|---------|----------|----------------------|
-| path | **string** | Path of where to save PNG, relative to method call. |
+| Parameter | Type       | Description                                         |
+| --------- | ---------- | --------------------------------------------------- |
+| path      | **string** | Path of where to save PNG, relative to method call. |
 
-| Return Type     | Return Description          |
-|----------|----------------------|
-| `string` | Path to PNG |
+| Return Type | Return Description |
+| ----------- | ------------------ |
+| `string`    | Path to PNG        |
 
 # Generate a Buffer
 
@@ -198,13 +208,14 @@ A new PNG file will be generated with position.
 
 The buffer will be returned from the function. Use promises or async await to ensure its completion.
 
-| Return Type     | Return Description          |
-|----------|----------------------|
-| `Buffer` | PNG Buffer |
+| Return Type | Return Description |
+| ----------- | ------------------ |
+| `Buffer`    | PNG Buffer         |
 
 # Image Customization
 
 You have three options for customization of the resulting PNG:
+
 - [Canvas Size](#canvas-size)
 - [Board Colors](#board-colors)
 - [Piece Style](#piece-style)
@@ -225,45 +236,49 @@ var imageGenerator = new ChessImageGenerator({
 # Canvas Size
 
 | Option | Type     | Default | Example          |
-|----------|----------|---------|------------------|
-| size     | `number` | *480*    | *250, 800, 1200* |
+| ------ | -------- | ------- | ---------------- |
+| size   | `number` | _480_   | _250, 800, 1200_ |
 
 Canvas size determines in **pixels** how large the resulting PNG will be.
 
 ### Example:
+
 ```
 var imageGenerator = new ChessImageGenerator({
     size: 1200,
 });
 ```
+
 The resulting PNG's will be 1200px by 1200px.
 
 # Board Colors
 
-| Option | Type     | Default | Example          |
-|----------|----------|---------|------------------|
-| light     | `string` | *"rgb(240, 217, 181)"* | *"rgb(250,250,250)", "white", "#ffffff"* |
-| dark     | `string` | *"rgb(181, 136, 99)"* | *"rgb(0,0,0)", "black", "#000000"* |
+| Option | Type     | Default                | Example                                  |
+| ------ | -------- | ---------------------- | ---------------------------------------- |
+| light  | `string` | _"rgb(240, 217, 181)"_ | _"rgb(250,250,250)", "white", "#ffffff"_ |
+| dark   | `string` | _"rgb(181, 136, 99)"_  | _"rgb(0,0,0)", "black", "#000000"_       |
 
 Light and dark determines the colors of both the light and dark squares respectively.
 
 Colors can be passed in a variety of formats:
 
 | Color Type             | Example                      |
-|------------------------|------------------------------|
-| Hexadecimal Color      | *"#00FF00"*                  |
-| RGB Color              | *"rgb(20, 20, 20)"*          |
-| RGBA Color             | *"rgba(20, 20, 20, .8)"*     |
-| HSL Color              | *"hsl(120, 100%, 50%)"*      |
-| HSLA Color             | *"hsla(120, 60%, 70%, 0.3)"* |
-| Predefined Color Names | *"blue"*                     |
+| ---------------------- | ---------------------------- |
+| Hexadecimal Color      | _"#00FF00"_                  |
+| RGB Color              | _"rgb(20, 20, 20)"_          |
+| RGBA Color             | _"rgba(20, 20, 20, .8)"_     |
+| HSL Color              | _"hsl(120, 100%, 50%)"_      |
+| HSLA Color             | _"hsla(120, 60%, 70%, 0.3)"_ |
+| Predefined Color Names | _"blue"_                     |
 
 ## Default Coloring:
+
 <p align="">
     <img width="300" src="./documentation/colors1.png">
 </p>
 
 ## Customized Coloring:
+
 <p align="">
     <img width="300" src="./documentation/colors2.png">
 </p>
@@ -277,26 +292,26 @@ var imageGenerator = new ChessImageGenerator({
 });
 ```
 
-
 # Piece Style
 
-| Option | Type     | Default | Example          |
-|----------|----------|---------|------------------|
-| style     | *string* | *"merida"* | *"alpha", "cheq"* |
+| Option | Type     | Default    | Example           |
+| ------ | -------- | ---------- | ----------------- |
+| style  | _string_ | _"merida"_ | _"alpha", "cheq"_ |
 
 The piece style determines the used style of pieces to create the image.
 
-
 # Board POV
+
 | Option  | Type      | Default | Example       |
-|---------|-----------|---------|---------------|
-| flipped | `boolean` | *false* | *true, false* |
+| ------- | --------- | ------- | ------------- |
+| flipped | `boolean` | _false_ | _true, false_ |
 
 Determines if the board should be flipped.  
 If set to `false`, the image will be from white's point of view.
-If set to `true`, the image will be from black's point of view.  
+If set to `true`, the image will be from black's point of view.
 
 ## Style Choices:
+
 - alpha
 
 <div style="flex">
@@ -341,7 +356,7 @@ If set to `true`, the image will be from black's point of view.
     <img width="60" src="./src/resources/leipzig/WhitePawn.png">
 </div>
 
-- merida 
+- merida
 
 <div style="flex">
     <img width="60" src="./src/resources/merida/BlackKing.png">
@@ -353,7 +368,6 @@ If set to `true`, the image will be from black's point of view.
 </div>
 
 All images were found at [Marcel van Kervinck](https://marcelk.net/chess/pieces/)! Thanks :)
-
 
 ### Example:
 
@@ -368,11 +382,12 @@ var imageGenerator = new ChessImageGenerator({
 - [canvas](https://www.npmjs.com/package/canvas)
 - [canvas-to-buffer](https://www.npmjs.com/package/canvas-to-buffer)
 - [chess.js](https://www.npmjs.com/package/chess.js)
-- [fs](https://www.npmjs.com/package/fs)
 - [path](https://www.npmjs.com/package/path)
 
 ---
 
 ## Hope you make some cool stuff!
+
 ![dog](https://media.giphy.com/media/100QWMdxQJzQC4/giphy.gif)
+
 ### - Andrew Young

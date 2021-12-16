@@ -1,7 +1,6 @@
-const { createCanvas, loadImage } = require("canvas");
+const {createCanvas, loadImage} = require("canvas");
 const Frame = require("canvas-to-buffer");
-const { Chess } = require("chess.js");
-const fs = require("fs");
+const {Chess} = require("chess.js");
 const path = require("path");
 
 const {
@@ -104,8 +103,8 @@ ChessImageGenerator.prototype = {
     ctx.fillStyle = this.light;
     ctx.fill();
 
-    const row = this.flipped ? r => r + 1 : r => 7 - r + 1;
-    const col = this.flipped ? c => c : c => 7 - c;
+    const row = this.flipped ? (r) => r + 1 : (r) => 7 - r + 1;
+    const col = this.flipped ? (c) => c : (c) => 7 - c;
 
     for (let i = 0; i < 8; i += 1) {
       for (let j = 0; j < 8; j += 1) {
@@ -148,31 +147,6 @@ ChessImageGenerator.prototype = {
       },
     });
     return frame.toBuffer();
-  },
-
-  /**
-   * Generates PNG image based on position
-   * @param {string} pngPath File name
-   */
-  async generatePNG(pngPath) {
-    if (!this.ready) {
-      throw new Error("Load a position first");
-    }
-
-    const buffer = await this.generateBuffer();
-
-    fs.open(pngPath, "w", (err, fd) => {
-      if (err) {
-        throw new Error(`could not open file: ${err}`);
-      }
-
-      fs.write(fd, buffer, 0, buffer.length, null, (writeError) => {
-        if (writeError) {
-          throw new Error(`error writing file: ${writeError}`);
-        }
-        fs.close(fd, () => pngPath);
-      });
-    });
   },
 };
 
