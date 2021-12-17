@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "types": "src",
   "scripts": {
-    "test": "node ./test/index.js --unhandled-rejections=none",
+    "test": "node ./test/main.test.js --unhandled-rejections=none",
     "lint": "eslint ./src"
   },
   "repository": {
@@ -32,6 +32,8 @@
   "devDependencies": {
     "eslint": "^7.10.0",
     "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-import": "^2.22.1"
+    "eslint-plugin-import": "^2.22.1",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
   }
 }

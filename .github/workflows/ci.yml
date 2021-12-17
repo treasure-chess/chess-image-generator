@@ -3,7 +3,7 @@ on:
   pull_request:
     types: [opened, synchronize]
 jobs:
-  lint:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,3 +18,5 @@ jobs:
       - run: yarn install
       - name: yarn lint
         run: yarn lint
+      - name: yarn test
+        run: yarn test
