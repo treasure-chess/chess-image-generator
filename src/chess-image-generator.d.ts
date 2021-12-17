@@ -27,7 +27,7 @@ declare class ChessImageGenerator {
   /**
      * Object constructor, initializes options.
      * @param {Options} [options] Optional options
-    
+
      */
   constructor(options?: Options);
   chess: any;

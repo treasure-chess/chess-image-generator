@@ -13,6 +13,7 @@
     "ecmaVersion": 2018
   },
   "rules": {
+    "quotes": "off",
     "no-await-in-loop": "off"
   }
 }
