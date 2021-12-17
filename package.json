@@ -1,15 +1,16 @@
 {
   "name": "@treasure-chess/chess-image-generator",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Generate images based on various forms of chess notation.",
   "main": "src/index.js",
   "types": "src",
   "scripts": {
-    "test": "node ./test/index.js --unhandled-rejections=none"
+    "test": "node ./test/index.js --unhandled-rejections=none",
+    "lint": "eslint ./src"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/treasure-chess/chess-image-generator.git"
+    "url": "git+https://github.com/treasure-chess/chess-image-generator#readme"
   },
   "keywords": [
     "Chess",
@@ -26,9 +27,7 @@
   "homepage": "https://github.com/treasure-chess/chess-image-generator#readme",
   "dependencies": {
     "canvas": "^2.6.1",
-    "canvas-to-buffer": "^1.1.0",
-    "chess.js": "^0.10.2",
-    "path": "^0.12.7"
+    "chess.js": "^0.10.2"
   },
   "devDependencies": {
     "eslint": "^7.10.0",

@@ -1,30 +1,30 @@
-const cols = "abcdefgh";
+const cols = 'abcdefgh';
 
-const white = "PBNRQK";
+const white = 'PBNRQK';
 
-const black = "pbnrqk";
+const black = 'pbnrqk';
 
 const defaultSize = 480;
 
-const defaultLight = "rgb(240, 217, 181)";
+const defaultLight = 'rgb(240, 217, 181)';
 
-const defaultDark = "rgb(181, 136, 99)";
+const defaultDark = 'rgb(181, 136, 99)';
 
-const defaultStyle = "neo";
+const defaultStyle = 'neo';
 
 const filePaths = {
-  wp: "WhitePawn",
-  bp: "BlackPawn",
-  wb: "WhiteBishop",
-  bb: "BlackBishop",
-  wn: "WhiteKnight",
-  bn: "BlackKnight",
-  wr: "WhiteRook",
-  br: "BlackRook",
-  wq: "WhiteQueen",
-  bq: "BlackQueen",
-  wk: "WhiteKing",
-  bk: "BlackKing",
+  wp: 'WhitePawn',
+  bp: 'BlackPawn',
+  wb: 'WhiteBishop',
+  bb: 'BlackBishop',
+  wn: 'WhiteKnight',
+  bn: 'BlackKnight',
+  wr: 'WhiteRook',
+  br: 'BlackRook',
+  wq: 'WhiteQueen',
+  bq: 'BlackQueen',
+  wk: 'WhiteKing',
+  bk: 'BlackKing',
 };
 
 module.exports = {
