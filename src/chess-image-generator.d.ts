@@ -27,7 +27,7 @@ declare class ChessImageGenerator {
   /**
      * Object constructor, initializes options.
      * @param {Options} [options] Optional options
-    
+
      */
   constructor(options?: Options);
   chess: any;
@@ -56,11 +56,6 @@ declare class ChessImageGenerator {
    * @returns {Promise<Buffer>} Image buffer
    */
   generateBuffer(): Promise<any>;
-  /**
-   * Generates PNG image based on position
-   * @param {string} pngPath File name
-   */
-  generatePNG(pngPath: string): Promise<void>;
 }
 declare namespace ChessImageGenerator {
   export { Options };
@@ -85,5 +80,5 @@ type Options = {
   /**
    * Whether the board is to be flipped or not
    */
-  flipped?: boolean
+  flipped?: boolean;
 };
