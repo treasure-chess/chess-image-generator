@@ -1,3 +1,4 @@
 node_modules
 *.jpeg
 *.png
+yarn-error.log
