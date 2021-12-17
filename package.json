@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/treasure-chess/chess-image-generator#readme"
+    "url": "git+https://github.com/treasure-chess/chess-image-generator"
   },
   "keywords": [
     "Chess",
@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/treasure-chess/chess-image-generator/issues"
   },
-  "homepage": "https://github.com/treasure-chess/chess-image-generator#readme",
+  "homepage": "https://github.com/treasure-chess/chess-image-generator",
   "dependencies": {
     "canvas": "^2.6.1",
     "chess.js": "^0.10.2"
