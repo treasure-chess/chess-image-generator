@@ -1,6 +1,6 @@
 const ChessImageGenerator = require("./chess-image-generator");
 
-//outputs base64 data for a jpeg, NOT a png
+// outputs base64 data for a jpeg, NOT a png
 const getBoardBase64 = async (pgn, playerColor, options) => {
   if (!pgn) {
     throw new Error("no PGN passed");
@@ -16,7 +16,7 @@ const getBoardBase64 = async (pgn, playerColor, options) => {
   let flipped = false;
   if (playerColor === "black") flipped = true;
 
-  var imageGenerator = new ChessImageGenerator({
+  const imageGenerator = new ChessImageGenerator({
     ...config,
     flipped,
   });
