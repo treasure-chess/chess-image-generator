@@ -1,10 +1,13 @@
 const { createCanvas, loadImage } = require("canvas");
-const { isNode } = require("browser-or-node");
 const path = require("path");
 
 // Fix for broken chess.js exports. See https://github.com/jhlywa/chess.js/issues/196
 let Chess;
-if (isNode) {
+if (
+  typeof process !== "undefined" &&
+  process.versions != null &&
+  process.versions.node != null
+) {
   const chess = require("chess.js");
   Chess = chess.Chess;
 } else {
