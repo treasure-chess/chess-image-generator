@@ -4,14 +4,16 @@ const path = require("path");
 // Fix for broken chess.js exports. See https://github.com/jhlywa/chess.js/issues/196
 let Chess;
 if (
-  typeof process !== "undefined" &&
-  process.versions != null &&
-  process.versions.node != null
+  typeof process !== "undefined"
+  && process.versions != null
+  && process.versions.node != null
 ) {
+  /* eslint-disable global-require */
   const chess = require("chess.js");
   Chess = chess.Chess;
 } else {
   Chess = require("chess.js");
+  /* eslint-enable global-require */
 }
 
 const {
@@ -89,7 +91,7 @@ ChessImageGenerator.prototype = {
               type: array[i][j].toLowerCase(),
               color: white.includes(array[i][j]) ? "w" : "b",
             },
-            cols[j] + (8 - i)
+            cols[j] + (8 - i),
           );
         }
       }
@@ -125,7 +127,7 @@ ChessImageGenerator.prototype = {
             (this.size / 8) * (7 - j + 1) - this.size / 8,
             (this.size / 8) * i,
             this.size / 8,
-            this.size / 8
+            this.size / 8,
           );
           ctx.fillStyle = this.dark;
           ctx.fill();
@@ -133,9 +135,9 @@ ChessImageGenerator.prototype = {
 
         const piece = this.chess.get(cols[col(j)] + row(i));
         if (
-          piece &&
-          piece.type !== "" &&
-          black.includes(piece.type.toLowerCase())
+          piece
+          && piece.type !== ""
+          && black.includes(piece.type.toLowerCase())
         ) {
           const image = `resources/${this.style}/${
             filePaths[`${piece.color}${piece.type}`]
@@ -146,7 +148,7 @@ ChessImageGenerator.prototype = {
             (this.size / 8) * (7 - j + 1) - this.size / 8,
             (this.size / 8) * i,
             this.size / 8,
-            this.size / 8
+            this.size / 8,
           );
         }
       }
