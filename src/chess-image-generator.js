@@ -1,6 +1,20 @@
-const { createCanvas, loadImage } = require('canvas');
-const { Chess } = require('chess.js');
-const path = require('path');
+const { createCanvas, loadImage } = require("canvas");
+const path = require("path");
+
+// Fix for broken chess.js exports. See https://github.com/jhlywa/chess.js/issues/196
+let Chess;
+if (
+  typeof process !== "undefined"
+  && process.versions != null
+  && process.versions.node != null
+) {
+  /* eslint-disable global-require */
+  const chess = require("chess.js");
+  Chess = chess.Chess;
+} else {
+  Chess = require("chess.js");
+  /* eslint-enable global-require */
+}
 
 const {
   cols,
@@ -11,7 +25,7 @@ const {
   defaultDark,
   defaultStyle,
   filePaths,
-} = require('./config/index');
+} = require("./config/index");
 /**
  *
  * @typedef {object} Options
@@ -44,7 +58,7 @@ ChessImageGenerator.prototype = {
    */
   async loadPGN(pgn) {
     if (!this.chess.load_pgn(pgn)) {
-      throw new Error('PGN could not be read successfully');
+      throw new Error("PGN could not be read successfully");
     } else {
       this.ready = true;
     }
@@ -56,7 +70,7 @@ ChessImageGenerator.prototype = {
    */
   async loadFEN(fen) {
     if (!this.chess.load(fen)) {
-      throw new Error('FEN could not be read successfully');
+      throw new Error("FEN could not be read successfully");
     } else {
       this.ready = true;
     }
@@ -71,11 +85,11 @@ ChessImageGenerator.prototype = {
 
     for (let i = 0; i < array.length; i += 1) {
       for (let j = 0; j < array[i].length; j += 1) {
-        if (array[i][j] !== '' && black.includes(array[i][j].toLowerCase())) {
+        if (array[i][j] !== "" && black.includes(array[i][j].toLowerCase())) {
           this.chess.put(
             {
               type: array[i][j].toLowerCase(),
-              color: white.includes(array[i][j]) ? 'w' : 'b',
+              color: white.includes(array[i][j]) ? "w" : "b",
             },
             cols[j] + (8 - i),
           );
@@ -91,11 +105,11 @@ ChessImageGenerator.prototype = {
    */
   async generateDataURL() {
     if (!this.ready) {
-      throw new Error('Load a position first');
+      throw new Error("Load a position first");
     }
 
     const canvas = createCanvas(this.size, this.size);
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
 
     ctx.beginPath();
     ctx.rect(0, 0, this.size, this.size);
@@ -122,7 +136,7 @@ ChessImageGenerator.prototype = {
         const piece = this.chess.get(cols[col(j)] + row(i));
         if (
           piece
-          && piece.type !== ''
+          && piece.type !== ""
           && black.includes(piece.type.toLowerCase())
         ) {
           const image = `resources/${this.style}/${
