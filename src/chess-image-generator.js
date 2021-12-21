@@ -1,5 +1,5 @@
 const { createCanvas, loadImage } = require("canvas");
-// const path = require("path");
+const path = require("path");
 
 const {
   cols,
@@ -71,7 +71,7 @@ ChessImageGenerator.prototype = {
           const image = `resources/${this.style}/${
             filePaths[`${piece.color}${piece.type}`]
           }.png`;
-          const imageFile = await loadImage(`${__dirname}/${image}`);
+          const imageFile = await loadImage(path.join(__dirname, image));
           await ctx.drawImage(
             imageFile,
             (this.size / 8) * (7 - j + 1) - this.size / 8,
