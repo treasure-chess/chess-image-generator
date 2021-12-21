@@ -1,8 +1,8 @@
 {
   "name": "@treasure-chess/chess-image-generator",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Generate images based on various forms of chess notation.",
-  "main": "dist/index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "node ./test/main.test.js --unhandled-rejections=none",
     "lint": "eslint ./src",
