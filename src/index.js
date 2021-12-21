@@ -2,9 +2,9 @@ const ChessImageGenerator = require("./chess-image-generator");
 // Fix for broken chess.js exports. See https://github.com/jhlywa/chess.js/issues/196
 let Chess;
 if (
-  typeof process !== "undefined" &&
-  process.versions != null &&
-  process.versions.node != null
+  typeof process !== "undefined"
+  && process.versions != null
+  && process.versions.node != null
 ) {
   /* eslint-disable global-require */
   const chess = require("chess.js");
@@ -21,7 +21,7 @@ if (
 const getBoardLayout = (pgn) => {
   const chess = new Chess();
   chess.load_pgn(pgn);
-  let boardLayout = {};
+  const boardLayout = {};
   ["a", "b", "c", "d", "e", "f", "g", "h"].map((col) => {
     new Array(8)
       .fill(null)
@@ -30,6 +30,10 @@ const getBoardLayout = (pgn) => {
   return boardLayout;
 };
 
+/**
+ * Loads PGN into chess.js object, and calculates the location pieces
+ * @returns {Promise<Buffer>} Image buffer
+ */
 // outputs base64 data for a jpeg, NOT a png
 const getBoardBase64 = async (boardLayout, playerColor, options) => {
   if (!boardLayout) {
@@ -50,7 +54,7 @@ const getBoardBase64 = async (boardLayout, playerColor, options) => {
     ...config,
     flipped,
   });
-  return await imageGenerator.generateDataURL(boardLayout);
+  return imageGenerator.generateDataURL(boardLayout);
 };
 
 module.exports = { getBoardLayout, getBoardBase64 };
