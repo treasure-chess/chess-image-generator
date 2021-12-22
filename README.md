@@ -23,14 +23,21 @@ yarn add @treasure-chess/chess-image-generator
 
 ## Usage
 
-Options are passed directly to `chess-image-generator` (options listed [here](https://github.com/andyruwruw/chess-image-generator)).
+First calculate the final state of the board using the chess.js library. You can save the output, rather than having to perform this step every time (takes up to 400ms per game).
 
 ```js
-const getBoardBase64 = require("@treasure-chess/chess-image-generator");
+const { getBoardLayout } = require("@treasure-chess/chess-image-generator");
+
+const moves = `1. e4 e6 2. d4 d5 3. Nd2 c5`;
+const boardLayout = getBoardLayout(moves);
+```
+
+Now use the data from the previous step. Options are passed directly to `chess-image-generator` (options listed [here](https://github.com/andyruwruw/chess-image-generator)).
+
+```js
+const { getBoardBase64 } = require("@treasure-chess/chess-image-generator");
 
 const MyComponent = () => {
-  const moves = `1. e4 e6 2. d4 d5 3. Nd2 c5`;
-
   const options = {
     size: 640,
     dark: "rgb(181, 137, 98)",
@@ -39,7 +46,7 @@ const MyComponent = () => {
   };
 
   const boardBase64 = await getBoardBase64(
-    moves, // List of moves or PGN
+    boardLayout,
     "black", // Which player to show on bottom
     options
   );
