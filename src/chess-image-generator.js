@@ -72,10 +72,7 @@ ChessImageGenerator.prototype = {
             filePaths[`${piece.color}${piece.type}`]
           }.png`;
           let imagePath = `/${image}`;
-          if (isNode) {
-            const path = require("path");
-            imagePath = path.join(__dirname, image);
-          }
+          if (isNode) imagePath = `${__dirname}/${image}`;
           const imageFile = await loadImage(imagePath);
           await ctx.drawImage(
             imageFile,
