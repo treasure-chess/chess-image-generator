@@ -13,7 +13,7 @@
 
 > Generate an image of the game board final state
 
-Adapted from https://github.com/andyruwruw/chess-image-generator. Updated to work in both node and browser environments, with a limited feature set specifically for Treasure Chess.
+Adapted from https://github.com/andyruwruw/chess-image-generator. Updated to work in both node and browser environments, with limited features designed specifically for Treasure Chess.
 
 ## Install
 
@@ -23,7 +23,7 @@ yarn add @treasure-chess/chess-image-generator
 
 ## Usage
 
-First calculate the final state of the board using the chess.js library. You can save the output, rather than having to perform this step every time (takes up to 400ms per game).
+First calculate the final state of the board using the chess.js library. You can save the output, rather than having to perform this step every time, which can save up to 400ms per game.
 
 ```js
 const { getBoardLayout } = require("@treasure-chess/chess-image-generator");
@@ -54,6 +54,8 @@ const MyComponent = () => {
   return <img src={boardBase64} />;
 };
 ```
+
+For browser usage, the `/resources` folder must be placed in your app's `/public` folder.
 
 ## Run tests
 

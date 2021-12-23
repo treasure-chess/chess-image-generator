@@ -16,6 +16,7 @@
     "quotes": "off",
     "array-callback-return": "off",
     "no-await-in-loop": "off",
-    "no-return-assign": "off"
+    "no-return-assign": "off",
+    "global-require": "off"
   }
 }

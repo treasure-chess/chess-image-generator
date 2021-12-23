@@ -1,17 +1,13 @@
 const ChessImageGenerator = require("./chess-image-generator");
+const { isNode } = require("./helpers");
+
 // Fix for broken chess.js exports. See https://github.com/jhlywa/chess.js/issues/196
 let Chess;
-if (
-  typeof process !== "undefined"
-  && process.versions != null
-  && process.versions.node != null
-) {
-  /* eslint-disable global-require */
+if (isNode) {
   const chess = require("chess.js");
   Chess = chess.Chess;
 } else {
   Chess = require("chess.js");
-  /* eslint-enable global-require */
 }
 
 /**
