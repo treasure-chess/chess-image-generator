@@ -1,5 +1,5 @@
 const ChessImageGenerator = require("./chess-image-generator");
-const { isNode } = require("./helpers");
+const {isNode} = require("./helpers");
 
 // Fix for broken chess.js exports. See https://github.com/jhlywa/chess.js/issues/196
 let Chess;
@@ -39,7 +39,7 @@ const getBoardBase64 = async (boardLayout, playerColor, options) => {
     size: 640,
     dark: "rgb(181, 137, 98)",
     light: "rgb(241, 216, 180)",
-    style: "neo",
+    style: "alpha",
   };
   if (options) config = options;
 
@@ -53,4 +53,4 @@ const getBoardBase64 = async (boardLayout, playerColor, options) => {
   return imageGenerator.generateDataURL(boardLayout);
 };
 
-module.exports = { getBoardLayout, getBoardBase64 };
+module.exports = {getBoardLayout, getBoardBase64};
