@@ -10,7 +10,7 @@ const defaultLight = "rgb(240, 217, 181)";
 
 const defaultDark = "rgb(181, 136, 99)";
 
-const defaultStyle = "neo";
+const defaultStyle = "alpha";
 
 const filePaths = {
   wp: "WhitePawn",
