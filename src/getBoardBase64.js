@@ -57,16 +57,16 @@ ChessImageGenerator.prototype = {
             (this.size / 8) * (7 - j + 1) - this.size / 8,
             (this.size / 8) * i,
             this.size / 8,
-            this.size / 8,
+            this.size / 8
           );
           ctx.fillStyle = this.dark;
           ctx.fill();
         }
         const piece = boardLayout[cols[col(j)] + row(i)];
         if (
-          piece
-          && piece.type !== ""
-          && black.includes(piece.type.toLowerCase())
+          piece &&
+          piece.type !== "" &&
+          black.includes(piece.type.toLowerCase())
         ) {
           const image = `resources/${this.style}/${
             filePaths[`${piece.color}${piece.type}`]
@@ -79,7 +79,7 @@ ChessImageGenerator.prototype = {
             (this.size / 8) * (7 - j + 1) - this.size / 8,
             (this.size / 8) * i,
             this.size / 8,
-            this.size / 8,
+            this.size / 8
           );
         }
       }
@@ -88,4 +88,30 @@ ChessImageGenerator.prototype = {
   },
 };
 
-module.exports = ChessImageGenerator;
+/**
+ * Loads PGN into chess.js object, and calculates the location pieces
+ * @returns {Promise<Buffer>} Image buffer
+ */
+// outputs base64 data for a jpeg, NOT a png
+const getBoardBase64 = async (boardLayout, playerColor, options) => {
+  if (!boardLayout) {
+    throw new Error("no PGN passed");
+  }
+  let config = {
+    size: 640,
+    dark: "rgb(181, 137, 98)",
+    light: "rgb(241, 216, 180)",
+    style: "alpha",
+  };
+  if (options) config = options;
+
+  let flipped = false;
+  if (playerColor === "black") flipped = true;
+
+  config.flipped = flipped;
+
+  const imageGenerator = new ChessImageGenerator(config);
+  return imageGenerator.generateDataURL(boardLayout);
+};
+
+export default getBoardBase64;
