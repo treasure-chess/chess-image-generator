@@ -1,5 +1,5 @@
-const ChessImageGenerator = require("./chess-image-generator");
-const {isNode} = require("./helpers");
+import ChessImageGenerator from "./chess-image-generator";
+import { isNode } from "./helpers";
 
 // Fix for broken chess.js exports. See https://github.com/jhlywa/chess.js/issues/196
 let Chess;
@@ -14,7 +14,7 @@ if (isNode) {
  * Loads PGN into chess.js object, and calculates the location pieces
  * @param {string} pgn Chess game PGN
  */
-const getBoardLayout = (pgn) => {
+export const getBoardLayout = (pgn) => {
   const chess = new Chess();
   chess.load_pgn(pgn);
   const boardLayout = {};
@@ -31,7 +31,7 @@ const getBoardLayout = (pgn) => {
  * @returns {Promise<Buffer>} Image buffer
  */
 // outputs base64 data for a jpeg, NOT a png
-const getBoardBase64 = async (boardLayout, playerColor, options) => {
+export const getBoardBase64 = async (boardLayout, playerColor, options) => {
   if (!boardLayout) {
     throw new Error("no PGN passed");
   }
@@ -52,5 +52,3 @@ const getBoardBase64 = async (boardLayout, playerColor, options) => {
   });
   return imageGenerator.generateDataURL(boardLayout);
 };
-
-module.exports = {getBoardLayout, getBoardBase64};
