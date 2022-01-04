@@ -46,9 +46,8 @@ export const getBoardBase64 = async (boardLayout, playerColor, options) => {
   let flipped = false;
   if (playerColor === "black") flipped = true;
 
-  const imageGenerator = new ChessImageGenerator({
-    ...config,
-    flipped,
-  });
+  config.flipped = flipped;
+
+  const imageGenerator = new ChessImageGenerator(config);
   return imageGenerator.generateDataURL(boardLayout);
 };
