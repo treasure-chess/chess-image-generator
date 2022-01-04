@@ -1,4 +1,4 @@
-import { isNode } from "./helpers";
+const { isNode } = require("./helpers");
 
 // Fix for broken chess.js exports. See https://github.com/jhlywa/chess.js/issues/196
 let Chess;
@@ -26,4 +26,4 @@ const getBoardLayout = (pgn) => {
   return boardLayout;
 };
 
-export default getBoardLayout;
+module.exports = getBoardLayout;

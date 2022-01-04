@@ -1,7 +1,7 @@
-import { createCanvas, loadImage } from "canvas";
-import { isNode } from "./helpers";
+const { createCanvas, loadImage } = require("canvas");
+const { isNode } = require("./helpers");
 
-import {
+const {
   cols,
   black,
   defaultSize,
@@ -9,7 +9,7 @@ import {
   defaultDark,
   defaultStyle,
   filePaths,
-} from "./config/index";
+} = require("./config/index");
 /**
  *
  * @typedef {object} Options
@@ -114,4 +114,4 @@ const getBoardBase64 = async (boardLayout, playerColor, options) => {
   return imageGenerator.generateDataURL(boardLayout);
 };
 
-export default getBoardBase64;
+module.exports = getBoardBase64;

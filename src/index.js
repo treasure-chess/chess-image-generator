@@ -1,4 +1,4 @@
-import getBoardLayout from "./getBoardLayout";
-import getBoardBase64 from "./getBoardBase64";
+const getBoardLayout = require("./getBoardLayout");
+const getBoardBase64 = require("./getBoardBase64");
 
-export { getBoardLayout, getBoardBase64 };
+module.exports = { getBoardLayout, getBoardBase64 };
