@@ -1,8 +1,8 @@
-import { writeFileSync } from "fs";
-import path from "path";
-import { Chess } from "chess.js";
+const { writeFileSync } = require("fs");
+const path = require("path");
+const { Chess } = require("chess.js");
 
-import { performance } from "perf_hooks";
+const { performance } = require("perf_hooks");
 
 const { getBoardLayout, getBoardBase64 } = require("../src/");
 

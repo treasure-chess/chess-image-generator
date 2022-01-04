@@ -29,6 +29,8 @@
     "chess.js": "^0.10.2"
   },
   "devDependencies": {
+    "@babel/node": "^7.16.0",
+    "@babel/core": "7.16.0",
     "eslint": "^7.10.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.25.3",
