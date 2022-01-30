@@ -6,7 +6,7 @@ on:
     paths:
       - "src/*"
       - "package.json"
-      - ".github/workflows/ci.main.*"
+      - ".github/workflows/ci-main.*"
 
 jobs:
   create-release-draft:
