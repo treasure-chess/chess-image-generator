@@ -88,4 +88,30 @@ ChessImageGenerator.prototype = {
   },
 };
 
-module.exports = ChessImageGenerator;
+/**
+ * Loads PGN into chess.js object, and calculates the location pieces
+ * @returns {Promise<Buffer>} Image buffer
+ */
+// outputs base64 data for a jpeg, NOT a png
+const getBoardBase64 = async (boardLayout, playerColor, options) => {
+  if (!boardLayout) {
+    throw new Error("no PGN passed");
+  }
+  let config = {
+    size: 640,
+    dark: "rgb(181, 137, 98)",
+    light: "rgb(241, 216, 180)",
+    style: "alpha",
+  };
+  if (options) config = options;
+
+  let flipped = false;
+  if (playerColor === "black") flipped = true;
+
+  config.flipped = flipped;
+
+  const imageGenerator = new ChessImageGenerator(config);
+  return imageGenerator.generateDataURL(boardLayout);
+};
+
+module.exports = getBoardBase64;

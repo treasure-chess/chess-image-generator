@@ -53,11 +53,11 @@ const main = async () => {
     size: 200,
     dark: "red",
     light: "blue",
-    style: "neo",
+    style: "cheq",
   };
   await test(testMoves1, "white", customConfig);
 
-  console.log("========== done ==========");
+  console.log("====== done ======");
 };
 
 main();

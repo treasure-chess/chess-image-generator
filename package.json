@@ -1,13 +1,11 @@
 {
   "name": "@treasure-chess/chess-image-generator",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "description": "Generate images based on various forms of chess notation.",
   "main": "src/index.js",
   "scripts": {
-    "test": "node ./test/main.test.js --unhandled-rejections=none",
     "lint": "eslint ./src",
-    "build": "babel src -d dist",
-    "build:watch": "nodemon --watch src --ext \"js,ts,tsx\" --ignore dist --exec \"yarn build\""
+    "test": "babel-node ./test/main.test.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +29,8 @@
     "chess.js": "^0.10.2"
   },
   "devDependencies": {
+    "@babel/core": "7.16.0",
+    "@babel/node": "^7.16.0",
     "eslint": "^7.10.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.25.3",

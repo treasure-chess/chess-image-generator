@@ -3,9 +3,6 @@
   <a href="https://www.npmjs.com/package/@treasure-chess/chess-image-generator" target="_blank">
     <img alt="Version" src="https://img.shields.io/npm/v/@treasure-chess/chess-image-generator.svg">
   </a>
-  <a href="https://github.com/treasure-chess/chess-image-generator/graphs/commit-activity" target="_blank">
-    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
-  </a>
   <a href="https://twitter.com/niftychess" target="_blank">
     <img alt="Twitter: niftychess" src="https://img.shields.io/twitter/follow/niftychess.svg?style=social" />
   </a>
