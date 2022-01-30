@@ -1,0 +1,40 @@
+name: Publish Release Package
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish-release:
+    name: Publish release package
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          registry-url: https://registry.npmjs.org/
+
+      - name: Parse Tag
+        run: |
+          if echo -n "${{ github.ref }}" | grep -qE "refs/tags/chess-achievements@";then
+            echo "PUBLISH=1" >> $GITHUB_ENV
+          fi
+
+      - name: Publish package
+        if: env.PUBLISH == 1
+        run: tasks/npm-publish.sh . latest
+        env:
+          PAT: ${{ secrets.PAT }}
+          NPMJS_TOKEN: ${{ secrets.NPMJS_TOKEN }}
+
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_DEVOPS }}
+        uses: Ilshidur/action-discord@0c4b27844ba47cb1c7bee539c8eead5284ce9fa9
+        with:
+          args: "📦 `@treasure-chess/chess-image-generator@latest` was published! https://www.npmjs.com/package/@treasure-chess/chess-image-generator"
