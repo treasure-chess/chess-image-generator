@@ -10,7 +10,7 @@ if (isNode) {
 }
 
 /**
- * Loads PGN into chess.js object, and calculates the location pieces
+ * Loads PGN into chess.js object,  and calculates the location pieces
  * @param {string} pgn Chess game PGN
  */
 const getBoardLayout = (pgn) => {
