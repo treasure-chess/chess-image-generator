@@ -67,16 +67,16 @@ ChessImageGenerator.prototype = {
             (this.size / 8) * (7 - j + 1) - this.size / 8,
             (this.size / 8) * i,
             this.size / 8,
-            this.size / 8
+            this.size / 8,
           );
           ctx.fillStyle = this.dark;
           ctx.fill();
         }
         const piece = boardLayout[cols[col(j)] + row(i)];
         if (
-          piece &&
-          piece.type !== "" &&
-          black.includes(piece.type.toLowerCase())
+          piece
+          && piece.type !== ""
+          && black.includes(piece.type.toLowerCase())
         ) {
           const image = `resources/${this.style}/${
             filePaths[`${piece.color}${piece.type}`]
@@ -89,7 +89,7 @@ ChessImageGenerator.prototype = {
             (this.size / 8) * (7 - j + 1) - this.size / 8,
             (this.size / 8) * i,
             this.size / 8,
-            this.size / 8
+            this.size / 8,
           );
         }
       }
