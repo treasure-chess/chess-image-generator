@@ -25,7 +25,8 @@
   },
   "homepage": "https://github.com/treasure-chess/chess-image-generator",
   "dependencies": {
-    "canvas": "^2.8.0",
+    "@napi-rs/canvas": "^0.1.19",
+    "canvas": "^2.9.0",
     "chess.js": "^0.10.2"
   },
   "devDependencies": {
