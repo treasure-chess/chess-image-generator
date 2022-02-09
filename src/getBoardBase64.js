@@ -12,10 +12,16 @@ const {
 
 let createCanvas;
 let loadImage;
+let Image;
 if (isNode) {
   const { promises } = require("fs");
-  ({ createCanvas } = require("@napi-rs/canvas"));
-  loadImage = promises.readFile;
+  ({ createCanvas, Image } = require("@napi-rs/canvas"));
+  loadImage = async (imagePath) => {
+    const buffer = await promises.readFile(imagePath);
+    const image = new Image();
+    image.src = buffer;
+    return image;
+  };
 } else {
   ({ createCanvas, loadImage } = require("canvas"));
 }
