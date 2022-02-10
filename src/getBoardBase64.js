@@ -1,5 +1,7 @@
 const { isNode } = require("./helpers");
 
+const { createCanvas, loadImage } = require("canvas");
+
 const {
   cols,
   black,
@@ -9,22 +11,6 @@ const {
   defaultStyle,
   filePaths,
 } = require("./config/index");
-
-let createCanvas;
-let loadImage;
-let Image;
-if (isNode) {
-  const { promises } = require("fs");
-  ({ createCanvas, Image } = require("@napi-rs/canvas"));
-  loadImage = async (imagePath) => {
-    const buffer = await promises.readFile(imagePath);
-    const image = new Image();
-    image.src = buffer;
-    return image;
-  };
-} else {
-  ({ createCanvas, loadImage } = require("canvas"));
-}
 
 /**
  *
@@ -73,21 +59,22 @@ ChessImageGenerator.prototype = {
             (this.size / 8) * (7 - j + 1) - this.size / 8,
             (this.size / 8) * i,
             this.size / 8,
-            this.size / 8,
+            this.size / 8
           );
           ctx.fillStyle = this.dark;
           ctx.fill();
         }
         const piece = boardLayout[cols[col(j)] + row(i)];
         if (
-          piece
-          && piece.type !== ""
-          && black.includes(piece.type.toLowerCase())
+          piece &&
+          piece.type !== "" &&
+          black.includes(piece.type.toLowerCase())
         ) {
           const image = `resources/${this.style}/${
             filePaths[`${piece.color}${piece.type}`]
           }.png`;
           let imagePath = `/${image}`;
+          // Left in to enable testing (node environment)
           if (isNode) imagePath = `${__dirname}/${image}`;
           const imageFile = await loadImage(imagePath);
           await ctx.drawImage(
@@ -95,12 +82,12 @@ ChessImageGenerator.prototype = {
             (this.size / 8) * (7 - j + 1) - this.size / 8,
             (this.size / 8) * i,
             this.size / 8,
-            this.size / 8,
+            this.size / 8
           );
         }
       }
     }
-    return canvas.toDataURL();
+    return canvas.toBuffer();
   },
 };
 

@@ -21,7 +21,7 @@ const testCanvas = async (boardLayout, playerColor, customConfig) => {
     `${path.join(__dirname, "./")}/test-${playerColor}${
       customConfig ? "-custom" : ""
     }.png`,
-    boardBase64.split("base64,")[1],
+    boardBase64,
     "base64"
   );
   var endCanvasTime = performance.now();
@@ -40,7 +40,7 @@ const testCanvasNode = async (boardLayout, playerColor, customConfig) => {
     `${path.join(__dirname, "./")}/test-${playerColor}${
       customConfig ? "-custom" : ""
     }.png`,
-    boardBase64.split("base64,")[1],
+    boardBase64,
     "base64"
   );
   var endCanvasTime = performance.now();
@@ -69,17 +69,19 @@ const testNode = async (moves, playerColor, customConfig) => {
   await testCanvasNode(boardLayout, playerColor, customConfig);
 };
 
+const customConfig = {
+  size: 200,
+  dark: "red",
+  light: "blue",
+  style: "cheq",
+};
 const main = async () => {
+  // Works only in browser environment, so testing is not currently possible
   await test(testMoves1, "white");
   await test(testMoves1, "black");
-
-  const customConfig = {
-    size: 200,
-    dark: "red",
-    light: "blue",
-    style: "cheq",
-  };
   await test(testMoves1, "white", customConfig);
+
+  // Works in Node environment
   await testNode(testMoves1, "white", customConfig);
   console.log("====== done ======");
 };

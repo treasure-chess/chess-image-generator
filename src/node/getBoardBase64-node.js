@@ -91,7 +91,7 @@ ChessImageGenerator.prototype = {
         }
       }
     }
-    return canvas.toDataURL();
+    return canvas.toBuffer();
   },
 };
 
