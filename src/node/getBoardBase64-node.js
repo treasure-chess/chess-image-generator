@@ -1,3 +1,5 @@
+const { promises } = require("fs");
+const { createCanvas, Image } = require("@napi-rs/canvas");
 const {
   cols,
   black,
@@ -7,9 +9,6 @@ const {
   defaultStyle,
   filePaths,
 } = require("../config/index");
-
-const { promises } = require("fs");
-const { createCanvas, Image } = require("@napi-rs/canvas");
 
 const loadImage = async (imagePath) => {
   const buffer = await promises.readFile(imagePath);
@@ -65,16 +64,16 @@ ChessImageGenerator.prototype = {
             (this.size / 8) * (7 - j + 1) - this.size / 8,
             (this.size / 8) * i,
             this.size / 8,
-            this.size / 8
+            this.size / 8,
           );
           ctx.fillStyle = this.dark;
           ctx.fill();
         }
         const piece = boardLayout[cols[col(j)] + row(i)];
         if (
-          piece &&
-          piece.type !== "" &&
-          black.includes(piece.type.toLowerCase())
+          piece
+          && piece.type !== ""
+          && black.includes(piece.type.toLowerCase())
         ) {
           const image = `resources/${this.style}/${
             filePaths[`${piece.color}${piece.type}`]
@@ -86,7 +85,7 @@ ChessImageGenerator.prototype = {
             (this.size / 8) * (7 - j + 1) - this.size / 8,
             (this.size / 8) * i,
             this.size / 8,
-            this.size / 8
+            this.size / 8,
           );
         }
       }
@@ -101,9 +100,9 @@ ChessImageGenerator.prototype = {
  */
 // outputs base64 data for a jpeg, NOT a png
 const getBoardBase64Node = async (boardLayout, playerColor, options) => {
-  if (!boardLayout) {
-    throw new Error("no PGN passed");
-  }
+  if (!boardLayout) throw new Error("no PGN passed");
+  let layout = boardLayout;
+  if (typeof boardLayout === "string") layout = JSON.parse(boardLayout);
   let config = {
     size: 640,
     dark: "rgb(181, 137, 98)",
@@ -118,7 +117,7 @@ const getBoardBase64Node = async (boardLayout, playerColor, options) => {
   config.flipped = flipped;
 
   const imageGenerator = new ChessImageGenerator(config);
-  return imageGenerator.generateDataURL(boardLayout);
+  return imageGenerator.generateDataURL(layout);
 };
 
 module.exports = getBoardBase64Node;

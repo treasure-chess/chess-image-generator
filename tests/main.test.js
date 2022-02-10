@@ -68,6 +68,10 @@ const testNode = async (moves, playerColor, customConfig) => {
   const boardLayout = testBoard(moves);
   await testCanvasNode(boardLayout, playerColor, customConfig);
 };
+const testStringBoardLayout = async (moves, playerColor, customConfig) => {
+  const boardLayout = testBoard(moves);
+  await testCanvas(JSON.stringify(boardLayout), playerColor, customConfig);
+};
 
 const customConfig = {
   size: 200,
@@ -80,6 +84,9 @@ const main = async () => {
   await test(testMoves1, "white");
   await test(testMoves1, "black");
   await test(testMoves1, "white", customConfig);
+
+  // Test when board layout is sent as a JSON string
+  await testStringBoardLayout(testMoves1, "white", customConfig);
 
   // Works in Node environment
   await testNode(testMoves1, "white", customConfig);
