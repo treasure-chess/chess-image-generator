@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint ./src",
     "test": "babel-node ./test/main.test.js",
-    "test:watch": "nodemon --watch src --ext \"js,ts,tsx\" --exec \"babel-node tests/main.test.js\""
+    "test:watch": "nodemon --watch src --watch tests --ext \"js,ts,tsx\" --exec \"babel-node tests/main.test.js\""
   },
   "files": [
     "src"
