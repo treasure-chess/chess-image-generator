@@ -14,9 +14,14 @@ Adapted from https://github.com/andyruwruw/chess-image-generator. Updated to wor
 
 ## Demo
 
-This library is deployed on vercel for testing purposes. Open this link to try it out:
+The image below is loaded from a vercel deployment of this libary.
 
-http://chess-image-generator.vercel/app/api?moves=1.%20e4%20e6%202.%20d4%20d5%203.%20Nd2%20c5&playerColor=black
+```
+<img width="200px"
+  src="https://chess-image-generator.vercel.app/api?moves=1.%20e4%20e6%202.%20d4%20d5%203.%20Nd2%20c5&playerColor=black"/>
+```
+
+<img width="200px" src="https://chess-image-generator.vercel.app/api?moves=1.%20e4%20e6%202.%20d4%20d5%203.%20Nd2%20c5&playerColor=black"/>
 
 ## Easy deployment
 
