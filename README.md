@@ -25,7 +25,10 @@ Vercel [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new
 ## Install
 
 ```sh
-yarn add @treasure-chess/chess-image-generator
+# Browser environments
+yarn add canvas @treasure-chess/chess-image-generator
+# Node environments
+yarn add @napi-rs/canvas @treasure-chess/chess-image-generator
 ```
 
 ## Usage
