@@ -1,4 +1,4 @@
-const { getBoardLayout } = require("../src");
+const { getBoardLayout } = require("../src/getBoardLayout");
 const getBoardBase64Node = require("../src/node/getBoardBase64-node");
 
 module.exports = async (req, res) => {

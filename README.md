@@ -22,7 +22,7 @@ http://chess-image-generator.vercel/app/api?moves=1.%20e4%20e6%202.%20d4%20d5%20
 
 Vercel [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com/treasure-chess/chess-image-generator)
 
-NOTE: The build step must include `yarn add @napi-rs/canvas`. For example: `yarn add @napi-rs/canvas && npm run vercel-build`
+NOTE: The install step in your vercel deployment must include `yarn add @napi-rs/canvas`.
 
 ## Install
 
