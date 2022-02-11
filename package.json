@@ -1,6 +1,6 @@
 {
   "name": "@treasure-chess/chess-image-generator",
-  "version": "1.5.5",
+  "version": "1.5.6",
   "description": "Generate images based on various forms of chess notation.",
   "main": "src/index.js",
   "scripts": {
@@ -23,7 +23,6 @@
     "Image"
   ],
   "author": "Andrew Young, Joseph Schiarizzi, Patrick Gallagher",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/treasure-chess/chess-image-generator/issues"
   },
