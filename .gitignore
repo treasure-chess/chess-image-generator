@@ -3,3 +3,5 @@ node_modules
 *.png
 yarn-error.log
 dist
+
+.vercel

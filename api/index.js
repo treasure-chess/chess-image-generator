@@ -3,7 +3,7 @@ const getBoardBase64Node = require("../src/node/getBoardBase64-node");
 
 module.exports = async (req, res) => {
   try {
-    const { moves, boardLayout, playerColor, options } = JSON.parse(req.body);
+    const { moves, boardLayout, playerColor, options } = req.query;
 
     // Set your own default config here
     let config = {
@@ -29,7 +29,7 @@ module.exports = async (req, res) => {
     console.log(error);
     res.send({
       statusCode: 500,
-      body: error,
+      body: error.message,
     });
   }
 };

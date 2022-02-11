@@ -12,6 +12,16 @@
 
 Adapted from https://github.com/andyruwruw/chess-image-generator. Updated to work in both node and browser environments, with limited features designed specifically for Treasure Chess.
 
+## Demo
+
+This library is deployed on vercel for testing purposes. Open this link to try it out:
+
+http://chess-image-generator.vercel/app/api?moves=1.%20e4%20e6%202.%20d4%20d5%203.%20Nd2%20c5&playerColor=black
+
+## Easy deployment
+
+Vercel [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com/treasure-chess/chess-image-generator)
+
 ## Install
 
 ```sh
@@ -20,7 +30,7 @@ yarn add @treasure-chess/chess-image-generator
 
 ## Usage
 
-First calculate the final state of the board using the chess.js library. You can save the output, rather than having to perform this step every time, which can save up to 400ms per game.
+First calculate the final state of the board using the chess.js library. You should save the output, rather than performing this step every page load, which saves up to 400ms per game.
 
 ```js
 const { getBoardLayout } = require("@treasure-chess/chess-image-generator");
@@ -29,10 +39,13 @@ const moves = `1. e4 e6 2. d4 d5 3. Nd2 c5`;
 const boardLayout = getBoardLayout(moves);
 ```
 
-Now use the data from the previous step. Options are passed directly to `chess-image-generator` (options listed [here](https://github.com/andyruwruw/chess-image-generator)).
+Now use the data from the previous step to create the image. See available options [here](https://github.com/andyruwruw/chess-image-generator).
 
 ```js
+// Browser environments
 const { getBoardBase64 } = require("@treasure-chess/chess-image-generator");
+// Node environments
+const getBoardBase64Node = require("@treasure-chess/chess-image-generator/src/node/getBoardBase64-node");
 
 const MyComponent = () => {
   const options = {
@@ -52,7 +65,7 @@ const MyComponent = () => {
 };
 ```
 
-For browser usage, the `/resources` folder must be placed in your app's `/public` folder.
+NOTE: For usage in a web app, the `/resources` folder must be placed in your app's `/public` folder.
 
 ## Run tests
 
@@ -62,15 +75,16 @@ yarn test
 
 ## Authors
 
-👤 **Andrew Young**
+👤 **Patrick Gallagher**
 
 👤 **Joseph Schiarizzi**
 
-👤 **Patrick Gallagher**
-
 - Website: https://niftychess.com
+
   - Twitter: [@niftychess](https://twitter.com/niftychess)
   - GitHub: [@treasure-chess](https://github.com/treasure-chess)
+
+👤 **Andrew Young**
 
 ## Show your support
 
