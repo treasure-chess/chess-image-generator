@@ -2,9 +2,6 @@
 <h1 align="center">Welcome to @treasure-chess/chess-image-generator 👋</h1>
 
 <p align="center">
-  <a href="#" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
-  </a>
   <a href="https://www.npmjs.com/package/@treasure-chess/chess-image-generator" target="_blank">
   <img alt="Version" src="https://img.shields.io/npm/v/@treasure-chess/chess-image-generator.svg">
   </a>
@@ -103,8 +100,7 @@ yarn test
 
 ## 📝 License
 
-Copyright © 2021 Nifty Chess, Inc.<br />
-This project is [MIT](https://github.com/Treasure-Chess/chess-achievements/blob/master/LICENSE) licensed.
+Copyright © 2022 Nifty Chess, Inc.
 
 ---
 
