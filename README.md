@@ -1,14 +1,21 @@
+<h1 align="center"><img width="600" style="border-radius: 30px;" src="https://github.com/treasure-chess/treasure-chess/blob/main/github-header.png?raw=true"/></h1>
 <h1 align="center">Welcome to @treasure-chess/chess-image-generator 👋</h1>
-<p>
+
+<p align="center">
   <a href="https://www.npmjs.com/package/@treasure-chess/chess-image-generator" target="_blank">
-    <img alt="Version" src="https://img.shields.io/npm/v/@treasure-chess/chess-image-generator.svg">
+  <img alt="Version" src="https://img.shields.io/npm/v/@treasure-chess/chess-image-generator.svg">
   </a>
-  <a href="https://twitter.com/niftychess" target="_blank">
-    <img alt="Twitter: niftychess" src="https://img.shields.io/twitter/follow/niftychess.svg?style=social" />
+  <a href="https://twitter.com/treasurechess_" target="_blank">
+    <img alt="Twitter: treasurechess_" src="https://img.shields.io/twitter/follow/treasurechess_.svg?style=social" />
   </a>
 </p>
 
 > Generate an image of the game board final state
+
+**Almost all of the code & tooling for Treasure Chess has been open sourced**. We hope you find these resources useful. Happy hacking!
+
+- App tooling using RedwoodJs 👉 https://github.com/pi0neerpat/redwood-devops-example
+- Code specific to Treasure Chess (smart contracts, achievements, card generation, etc.) is on our organization page: https://github.com/treasure-chess
 
 Adapted from https://github.com/andyruwruw/chess-image-generator. Updated to work in both node and browser environments, with limited features designed specifically for Treasure Chess.
 
@@ -83,22 +90,27 @@ NOTE: For usage in a web app, the `/resources` folder must be placed in your app
 yarn test
 ```
 
-## Authors
+## Contributors ✨
 
 👤 **Patrick Gallagher**
 
+- Website: https://patrickgallagher.dev
+- Twitter: [@pi0neerpat](https://twitter.com/pi0neerpat)
+- GitHub: [@pi0neerpat](https://github.com/pi0neerpat)
+
 👤 **Joseph Schiarizzi**
-
-- Website: https://niftychess.com
-
-  - Twitter: [@niftychess](https://twitter.com/niftychess)
-  - GitHub: [@treasure-chess](https://github.com/treasure-chess)
 
 👤 **Andrew Young**
 
-## Show your support
+👤 **Treasure Chess Community <maintainers@niftychess.com>**
 
-Give a ⭐️ if this project helped you!
+- Website: https://treasurechess.com
+- Twitter: [@treasurechess\_](https://twitter.com/treasurechess_)
+- GitHub: [@Treasure-Chess](https://github.com/Treasure-Chess)
+
+## 📝 License
+
+Copyright © 2022 Nifty Chess, Inc.
 
 ---
 
